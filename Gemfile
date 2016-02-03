@@ -45,3 +45,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger', group: [:development, :test]
 
 gem 'carrierwave'
+gem 'rmagick'
+gem 'mini_magick'
