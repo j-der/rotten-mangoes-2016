@@ -10,13 +10,19 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @admin_user = User.new(admin_user_params)
+    @admin_user.admin = true
 
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
+    if @admin_user.save
+      redirect_to movies_path, notice: "You are now an admin!"
     else
       render :new
     end
+  end
+
+  protected
+
+  def admin_user_params
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
   end
 end
