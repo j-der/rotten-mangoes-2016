@@ -43,3 +43,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'carrierwave'
+gem 'rmagick'
+gem 'mini_magick'
