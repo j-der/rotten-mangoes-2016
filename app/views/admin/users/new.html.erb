@@ -1,2 +1,36 @@
-<h1>Admin::Users#new</h1>
-<p>Find me in app/views/admin/users/new.html.erb</p>
+<h1>Become a Rotten Mangoes administrator</h1>
+
+<%= form_for @admin_user do |f| %>
+  <% if @admin_user.errors.any? %>
+    <div>
+    <%= pluralize(@admin_user.errors.count, "error") %> prevented the account from being created:
+      <ul>
+        <% @admin_user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      </ul>
+    </div>
+        <% end %>
+  <% end %>
+
+  <div>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :firstname, "First Name" %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div>
+    <%= f.label :lastname, "Last Name" %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div> <%= f.submit "Submit" %></div>
+<% end %>
