@@ -47,4 +47,8 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(
       :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :poster_image)
   end
+
+  # def search
+  #   @movie = Movie.whatever_search_method_you_defined(params[:q])
+  # end
 end

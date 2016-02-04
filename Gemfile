@@ -47,3 +47,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'mini_magick'
+gem 'faker'
+gem 'pry-rails', :group => [:development]
+
+gem 'kaminari'
