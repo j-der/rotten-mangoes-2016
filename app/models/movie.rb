@@ -2,6 +2,9 @@ class Movie < ActiveRecord::Base
 
   mount_uploader :poster_image, PosterImageUploader
 
+  # paginates_per 10
+
+  belongs_to :user
   has_many :reviews
 
   validates :title,
@@ -17,7 +20,7 @@ class Movie < ActiveRecord::Base
     presence: true
 
   # validates :poster_image_url,
-  #   presence: true
+    # presence: true
 
   validates :release_date,
     presence: true
@@ -32,6 +35,20 @@ class Movie < ActiveRecord::Base
     end
 
   end
+
+  # def some_search_method
+
+  # end
+
+  # scope :search_all, -> (term) {
+  #   where(
+  #     'description LIKE ? OR name LIKE ?' "%#{term}", "%#{term}"
+  #   )
+  # }
+
+
+
+
 
   protected
 
