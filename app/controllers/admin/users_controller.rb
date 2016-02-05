@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
 
+  before_action :check_admin
   layout 'admin'
   # def index
 
@@ -21,6 +22,10 @@ class Admin::UsersController < ApplicationController
   end
 
   protected
+
+  def check_admin
+    redirect_to root_url, notice: "Cannot view unless admin" unless current_user.admin
+  end
 
   def admin_user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)

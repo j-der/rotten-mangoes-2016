@@ -6,14 +6,19 @@
 
 <h2>Search for a movie!</h2>
 
-<%= form_for :movie, url: movies_path, method: :get do |f|%>
+<%= form_tag(movies_path, { method: :get}) do %>
   <p>
-    <%= f.label :title %>
-    <%= f.text_field 'title', value: params[:title] %>
-    <%= f.label :director %>
-    <%= f.text_field 'director', value: params[:director] %>
-
-    <%= f.submit "search", name: nil %>
+    <%= label_tag "Search" %>
+    <%= text_field_tag :term, params[:term] %>
+    <%= label_tag "Runtime in minutes" %>
+    <%= select_tag(:runtime_in_minutes, options_for_select([
+      ["--", 0],
+      ["Under 90 minutes", 1],
+      ["Between 90 and 120 minutes", 2],
+      ["Over 120 minutes", 3]
+      ])
+    ) %>
+    <%= submit_tag "search", name: nil %>
   </p>
 <% end %>
 
