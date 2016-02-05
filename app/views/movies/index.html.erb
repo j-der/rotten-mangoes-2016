@@ -1,7 +1,22 @@
 <h1>Rotten Mangoes</h1>
 
-<%= link_to "Submit a movie!", new_movie_path %>
+<%= link_to "Submit a movie!", new_movie_path %><br>
+<%= link_to "Back to all movies", movies_path %>
 <hr>
+
+<h2>Search for a movie!</h2>
+
+<%= form_for :movie, url: movies_path, method: :get do |f|%>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field 'title', value: params[:title] %>
+    <%= f.label :director %>
+    <%= f.text_field 'director', value: params[:director] %>
+
+    <%= f.submit "search", name: nil %>
+  </p>
+<% end %>
+
 
 <% @movies.each do |movie| %>
   <%= image_tag(movie.poster_image) %>

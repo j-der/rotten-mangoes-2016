@@ -2,8 +2,6 @@ class Movie < ActiveRecord::Base
 
   mount_uploader :poster_image, PosterImageUploader
 
-  # paginates_per 10
-
   belongs_to :user
   has_many :reviews
 
@@ -33,8 +31,14 @@ class Movie < ActiveRecord::Base
     else
       nil
     end
-
   end
+
+  scope :title, -> (term) {
+    where(
+      'title LIKE ?', "%#{term}%"
+    )
+  }
+  scope :title_and_director, -> (title, dir) {title(title).where('director like ?', dir)}
 
   # def some_search_method
 

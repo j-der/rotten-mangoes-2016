@@ -1,6 +1,13 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    if input = params[:movie]
+      title = "%#{input[:title]}%"
+      director = "%#{input[:director]}%"
+
+      @movies = Movie.title_and_director(title, director)
+    else
+      @movies = Movie.all
+    end
   end
 
   def show
