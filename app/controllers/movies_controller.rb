@@ -1,7 +1,21 @@
 class MoviesController < ApplicationController
+
   def index
     @movies = Movie.all
+    @movies = @movies.search(params[:term]) unless params[:term].blank?
+    @movies = @movies.runtime(params[:runtime_in_minutes]) unless params[:runtime_in_minutes].blank?
   end
+
+#   def index
+
+#     @movies = Movie.all
+#     @movies = @movies.search(params[:term]) unless params[:term].blank?
+#     @movies = @movies.runtime(params[:term])
+
+#     if @movies.empty?
+#       flash.now[:notice] = "Sorry, no movie matches that criteria!"
+#     end
+#   end
 
   def show
     @movie = Movie.find(params[:id])
@@ -52,3 +66,4 @@ class MoviesController < ApplicationController
   #   @movie = Movie.whatever_search_method_you_defined(params[:q])
   # end
 end
+
